@@ -250,6 +250,7 @@ static int _cnd_timedwait_win32(cnd_t *cond, mtx_t *mtx, DWORD timeout)
   }
   else if (result == (int)WAIT_FAILED)
   {
+	//DWORD err = GetLastError ();
     return thrd_error;
   }
 

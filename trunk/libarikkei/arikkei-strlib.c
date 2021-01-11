@@ -47,6 +47,74 @@ arikkei_strncpy (unsigned char *d, unsigned int d_len, const unsigned char *s)
 }
 
 unsigned int
+arikkei_strcpy_join (unsigned char* d, unsigned int d_len, const unsigned char* srcs[], unsigned int n_srcs, const int lens[],
+	const unsigned char* sep, int sep_len)
+{
+	unsigned int len = 0, i;
+	if (sep_len < 0) {
+		sep_len = (sep) ? (unsigned int) strlen ((const char*) sep) : 0;
+	}
+	for (i = 0; i < n_srcs; i++) {
+		if (lens && (lens[i] > 0)) {
+			len += lens[i];
+		} else if (srcs[i]) {
+			len += (srcs[i]) ? (unsigned int) strlen ((const char*) srcs[i]) : 0;
+		}
+		len += sep_len;
+	}
+	len += 1;
+	if (len <= d_len) {
+		unsigned int dpos = 0;
+		for (i = 0; i < n_srcs; i++) {
+			unsigned int slen = (lens && (lens[i] > 0)) ? lens[i] : (srcs[i]) ? (unsigned int) strlen ((const char*) srcs[i]) : 0;
+			if (slen) {
+				memcpy (d + dpos, srcs[i], slen);
+				dpos += slen;
+			}
+		}
+		if (sep && sep_len) {
+			memcpy (d + dpos, sep, sep_len);
+			dpos += sep_len;
+		}
+		d[dpos] = 0;
+	}
+	return len;
+}
+
+unsigned char*
+arikkei_strdup_join (const unsigned char* srcs[], unsigned int n_srcs, const int lens[],
+	const unsigned char* sep, int sep_len)
+{
+	unsigned int len = 0, i, dpos = 0;
+	unsigned char* d;
+	if (sep_len < 0) {
+		sep_len = (sep) ? (unsigned int) strlen ((const char*) sep) : 0;
+	}
+	for (i = 0; i < n_srcs; i++) {
+		if (lens && (lens[i] > 0)) {
+			len += lens[i];
+		} else if (srcs[i]) {
+			len += (srcs[i]) ? ( unsigned int) strlen (( const char*) srcs[i]) : 0;
+		}
+		len += sep_len;
+	}
+	d = (unsigned char*) malloc (len + 1);
+	for (i = 0; i < n_srcs; i++) {
+		unsigned int slen = (lens && (lens[i] > 0)) ? lens[i] : (srcs[i]) ? ( unsigned int) strlen (( const char*) srcs[i]) : 0;
+		if (slen) {
+			memcpy (d + dpos, srcs[i], slen);
+			dpos += slen;
+		}
+	}
+	if (sep && sep_len) {
+		memcpy (d + dpos, sep, sep_len);
+		dpos += sep_len;
+	}
+	d[dpos] = 0;
+	return d;
+}
+
+unsigned int
 arikkei_strtoll (const unsigned char *str, unsigned int len, int64_t *val)
 {
 	int sign = 1;

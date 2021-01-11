@@ -30,6 +30,15 @@ unsigned int arikkei_memcpy_str (unsigned char *d, unsigned int d_len, const uns
 /* Terminates if there is room, returns the length in bytes (inlcuding \0) */
 unsigned int arikkei_strncpy (unsigned char *d, unsigned int d_len, const unsigned char *s);
 
+/*
+ * If lens is NULL or lens[i] <= 0 or sep_len < 0 corresponding string is assumed to be zero-terminated
+ */
+
+unsigned int arikkei_strcpy_join (unsigned char* d, unsigned int d_len, const unsigned char* srcs[], unsigned int n_srcs, const int lens[],
+	const unsigned char *sep, int sep_len);
+unsigned char *arikkei_strdup_join (const unsigned char* srcs[], unsigned int n_srcs, const int lens[],
+	const unsigned char* sep, int sep_len);
+
 /* Return number of bytes consumed */
 unsigned int arikkei_strtoll (const unsigned char *str, unsigned int len, int64_t *val);
 unsigned int arikkei_strtoull (const unsigned char *str, unsigned int len, uint64_t *val);
