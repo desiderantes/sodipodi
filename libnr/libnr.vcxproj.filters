@@ -33,9 +33,6 @@
     <ClCompile Include="nr-matrix.c">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="nr-object.c">
-      <Filter>Source Files</Filter>
-    </ClCompile>
     <ClCompile Include="nr-path.c">
       <Filter>Source Files</Filter>
     </ClCompile>
@@ -108,9 +105,6 @@
       <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="nr-matrix.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="nr-object.h">
       <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="nr-path.h">
