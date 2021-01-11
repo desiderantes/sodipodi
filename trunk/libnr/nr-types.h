@@ -78,7 +78,12 @@ struct _NRRectD {
 };
 
 struct _NRRectF {
-	float x0, y0, x1, y1;
+	union {
+		struct {
+			float x0, y0, x1, y1;
+		};
+		float c[4];
+	};
 };
 
 struct _NRRectL {

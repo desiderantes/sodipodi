@@ -96,7 +96,6 @@
     <ClCompile Include="nr-gradient.c" />
     <ClCompile Include="nr-image.c" />
     <ClCompile Include="nr-matrix.c" />
-    <ClCompile Include="nr-object.c" />
     <ClCompile Include="nr-path.c" />
     <ClCompile Include="nr-pathops.c" />
     <ClCompile Include="nr-pixblock-compose.c" />
@@ -123,7 +122,6 @@
     <ClInclude Include="nr-image.h" />
     <ClInclude Include="nr-macros.h" />
     <ClInclude Include="nr-matrix.h" />
-    <ClInclude Include="nr-object.h" />
     <ClInclude Include="nr-path.h" />
     <ClInclude Include="nr-pathops.h" />
     <ClInclude Include="nr-pixblock-compose.h" />
