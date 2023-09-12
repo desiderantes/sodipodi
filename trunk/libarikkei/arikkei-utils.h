@@ -12,6 +12,8 @@
 
 /* Basic compatibility */
 
+#define noARIKKEI_MEMCHECK
+
 #ifdef _WIN32
 #define ARIKKEI_INLINE __inline
 #else
@@ -40,6 +42,13 @@
 
 #ifdef __cplusplus
 extern "C" {
+#endif
+
+#ifdef ARIKKEI_MEMCHECK
+#define ARIKKEI_CHECK_INTEGRITY() arikkei_check_integrity()
+void arikkei_check_integrity (void);
+#else
+#define ARIKKEI_CHECK_INTEGRITY()
 #endif
 
 #define arikkei_warning(expr) arikkei_emit_fail_warning ((const unsigned char *) __FILE__, __LINE__, (const unsigned char *) "?", (const unsigned char *) expr)
